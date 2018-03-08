@@ -4,8 +4,6 @@ from flask_sockets import Sockets
 
 import time
 
-from ping import ping
-
 app = Flask(__name__)
 sockets = Sockets(app)
 
