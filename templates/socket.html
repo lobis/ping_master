@@ -5,6 +5,10 @@
         ws.onmessage = function(evt){
             var received_msg = evt.data;
             //alert(received_msg);
+        data_json = JSON.stringify(received_msg)
+        for (i in [data_json]){
+            console.log(data_json[i])
+        }
             document.getElementById("stream_data").innerHTML += received_msg;
         }
         ws.onopen = function(){
@@ -14,9 +18,13 @@
 </head>
 
 <body>
-    <h1>Stream:</h1>
+    <h1>Hosts:</h1>
     <div id="stream_data">
+        <script>
 
+
+
+        </script>
     </div>
 </body>
 </html>
