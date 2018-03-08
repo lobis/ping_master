@@ -1,0 +1,22 @@
+<head>
+    <title>Realtime</title>
+    <script type="text/javascript">
+        var ws = new WebSocket("ws://" + "localhost:5000" + "/echo");
+        ws.onmessage = function(evt){
+            var received_msg = evt.data;
+            //alert(received_msg);
+            document.getElementById("stream_data").innerHTML += received_msg;
+        }
+        ws.onopen = function(){
+            ws.send("hello world!");
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Stream:</h1>
+    <div id="stream_data">
+
+    </div>
+</body>
+</html>
