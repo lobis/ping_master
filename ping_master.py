@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template, request
 from flask_sockets import Sockets
 
 import time
@@ -11,15 +10,22 @@ app = Flask(__name__)
 sockets = Sockets(app)
 
 hosts = []
+'''
 with open('hosts') as f:
     for line in f:
         hosts.append([x for x in line.split()])
-
+'''
 @app.route('/')
 def main():
     #return render_template('pingman.html', ping=ping, hosts=hosts)
-    return render_template("socket.html", hosts=hosts)
+    return render_template("socket.html")
 
+'''
+@app.route('/submit_host', methods = ['POST'])
+def submit_host():
+    print request.form
+    #hosts.append(host_ip)
+'''
 @sockets.route('/echo')
 def echo_socket(ws):
     hosts = hosts_get("hosts")

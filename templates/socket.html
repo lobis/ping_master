@@ -33,13 +33,18 @@
 </head>
 
 <body>
-    <h1>Hosts:</h1>
+    <h1>- Ping Master -</h1>
+    Hosts selected from /hosts file
     <div id="stream_data">
         <script>
 
-
-
         </script>
     </div>
+    <form action="/submit_host" method="post">
+    <div>
+        <label for="ip">Host IP:</label>
+        <input type="text" id="ip" name="host_ip">
+    </div>
+</form>
 </body>
 </html>
