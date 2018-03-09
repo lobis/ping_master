@@ -16,6 +16,7 @@ def hosts_get(filename):
 
 def ping_host(ip):
     FNULL = open(os.devnull, 'w')
+    #careful when using venv
     response = call(["ping", "-c 1", "-W 1", ip], stdout=FNULL)
     #ping command returns 0 if host is up, returns error code >0 else
     return not response

@@ -5,14 +5,17 @@
         ws.onmessage = function(evt){
             var received_msg = evt.data;
             //alert(received_msg);
-        data_json = JSON.stringify(received_msg)
-        for (i in [data_json]){
+        data_json = JSON.parse(received_msg)
+        //console.log(data_json[0])
+        for (i in data_json){
+            console.log(i)
             console.log(data_json[i])
+
         }
             document.getElementById("stream_data").innerHTML += received_msg;
         }
         ws.onopen = function(){
-            ws.send("hello world!");
+            ws.send("connection established");
         }
     </script>
 </head>

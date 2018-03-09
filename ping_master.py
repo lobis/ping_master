@@ -30,7 +30,7 @@ def echo_socket(ws):
             #print ping_host('192.168.0.1')
         #print(results_ping)
         data_json = json.dumps(results_ping)
-        print data_json
+        print(data_json)
         ws.send(data_json)
         time.sleep(1)
         #print("sending...")
