@@ -7,12 +7,18 @@
             //alert(received_msg);
         data_json = JSON.parse(received_msg)
         //console.log(data_json[0])
-        for (i in data_json){
-            console.log(i)
-            console.log(data_json[i])
 
+        txt = ""
+        txt += "<table border='1'>"
+        txt += "<th>Host</th><th>Alive</th>"
+
+        for (i in data_json){
+            txt += "<tr><td>" + i + "</td><td>" + data_json[i] + "</td></tr>";
+            //console.log(i)
+            //console.log(data_json[i])
         }
-            document.getElementById("stream_data").innerHTML += received_msg;
+        txt += "</table>"
+        document.getElementById("stream_data").innerHTML = txt;
         }
         ws.onopen = function(){
             ws.send("connection established");
