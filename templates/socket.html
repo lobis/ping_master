@@ -13,7 +13,13 @@
         txt += "<th>Host</th><th>Alive</th>"
 
         for (i in data_json){
-            txt += "<tr><td>" + i + "</td><td>" + data_json[i] + "</td></tr>";
+            status = ""
+            if (data_json[i] == false){
+                status =  "<font color='red'>NO</font>"
+            }else{
+                status =  "<font color='green'>YES</font>"
+            }
+            txt += "<tr><td>" + i + "</td><td>" + status + "</td></tr>";
             //console.log(i)
             //console.log(data_json[i])
         }
