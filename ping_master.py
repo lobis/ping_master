@@ -20,12 +20,12 @@ def main():
     #return render_template('pingman.html', ping=ping, hosts=hosts)
     return render_template("socket.html")
 
-'''
-@app.route('/submit_host', methods = ['POST'])
+#testing branch
+@app.route('/submit_host', methods = ['POST', 'GET'])
 def submit_host():
-    print request.form
+    print "done"
     #hosts.append(host_ip)
-'''
+
 @sockets.route('/echo')
 def echo_socket(ws):
     hosts = hosts_get("hosts")
