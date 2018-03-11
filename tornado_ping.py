@@ -38,15 +38,21 @@ class SocketHandler(tornado.websocket.WebSocketHandler):
         print("Received message: %s" % message)
         self.send_results()
 
+class SubmitHostHandler(tornado.web.RequestHandler):
+    def post(self):
+        print 'hola'
+        self.render("./templates/socket.html")
+
 def make_app():
     return tornado.web.Application([
         (r"/", MainHandler),
         (r"/ws", SocketHandler),
+        (r"/submit_host", SubmitHostHandler),
         #(r"/static/(.*)", tornado.web.StaticFileHandler)],
         ]
     )
-#"/home/luis/Desktop/ping_master"
-#os.path.join(os.path.dirname(__file__))
+
+
 def main():
     app = make_app()
     app.listen(8888)
