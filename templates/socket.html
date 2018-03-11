@@ -1,7 +1,7 @@
 <head>
     <title>Realtime</title>
     <script type="text/javascript">
-        var ws = new WebSocket("ws://" + "localhost:5000" + "/echo");
+        var ws = new WebSocket("ws://" + "localhost:8888" + "/ws");
         ws.onmessage = function(evt){
             var received_msg = evt.data;
             //alert(received_msg);
