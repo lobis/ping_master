@@ -1,10 +1,10 @@
 <head>
     <title>Realtime</title>
-    <script type="text/javascript">
+    <script>
         var ws = new WebSocket("ws://" + "localhost:8888" + "/ws");
         ws.onmessage = function(evt){
-            var received_msg = evt.data;
-            //alert(received_msg);
+        var received_msg = evt.data;
+        //alert(received_msg);
         data_json = JSON.parse(received_msg)
         //console.log(data_json[0])
 
@@ -13,15 +13,18 @@
         txt += "<th>Host</th><th>Alive</th>"
 
         for (i in data_json){
-            status = ""
-            if (data_json[i] == false){
-                status =  "<font color='red'>NO</font>"
-            }else{
-                status =  "<font color='green'>YES</font>"
-            }
-            txt += "<tr><td>" + i + "</td><td>" + status + "</td></tr>";
-            //console.log(i)
-            //console.log(data_json[i])
+        status = ""
+        if (data_json[i] == false){
+        status =  "<font color='red'>NO</font>"
+        }else{
+        status =  "<font color='green'>YES</font>"
+        }
+        txt += "<tr><td>" + i + "</td><td>" + status + "</td></tr>";
+        //console.log(i)
+        //console.log(data_json[i])
+
+        ws.send("0gi");
+
         }
         txt += "</table>"
         document.getElementById("stream_data").innerHTML = txt;
@@ -30,6 +33,7 @@
             ws.send("connection established");
         }
     </script>
+
 </head>
 
 <body>
