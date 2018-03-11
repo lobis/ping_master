@@ -18,22 +18,27 @@ class SocketHandler(tornado.websocket.WebSocketHandler):
         data_json = json.dumps(results_ping)
         print(data_json)
         self.write_message(data_json)
-
+    def send_hello(self):
+        print("hello!"
+              )
     def open(self):
         print("WebSocket opened")
         self.hosts = hosts_get("./hosts")
         print self.hosts
 
         #main_loop = tornado.ioloop.IOLoop.instance()
-        #self.loop = tornado.ioloop.PeriodicCallback(self.send_results(), 1000)#, io_loop=main_loop)
-        #self.loop.start()
+        #tornado.ioloop.PeriodicCallback(self.send_results(), 1000).start()
+        self.callback = tornado.ioloop.PeriodicCallback(self.send_hello(), 1000)
+        self.callback.start()
         #main_loop.start()
 
     def on_close(self):
         print("WebSocket closed")
+        self.callback.stop()
 
     def on_message(self, message):
-        self.write_message(u"You said: " + message)
+        pass
+        #self.write_message(u"You said: " + message)
     '''
     def open(self):
         print("WebSocket opened")
@@ -58,7 +63,8 @@ def make_app():
 def main():
     app = make_app()
     app.listen(8888)
-    tornado.ioloop.IOLoop.current().start()
+    #tornado.ioloop.IOLoop.current().start()
+    tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == "__main__":
     main()
